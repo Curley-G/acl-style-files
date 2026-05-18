@@ -31,6 +31,7 @@
 %additional package(s)
 \usepackage{graphicx}
 \usepackage{subcaption}
+\captionsetup[subfigure]{font=small,labelfont=bf,skip=4pt}
 
 % If the title and author information does not fit in the area allocated, uncomment the following
 %
@@ -249,42 +250,42 @@ Conditional  &  5 &   219 &   7{,}430 & 694 &  33 &  1{,}167 & 699 &  33 &  1{,}
 
 \begin{figure*}[t]
 \centering
-\begin{subfigure}{0.32\textwidth}
+\begin{subfigure}[t]{0.32\textwidth}
   \centering
-  \includegraphics[width=\linewidth]{image/figs/fig1_label_loglog.pdf}
-  \caption{Label frequency (Zipf, slope $=-2.25$)}
+  \includegraphics[width=\linewidth,height=3.8cm,keepaspectratio]{image/figs/fig1_label_loglog.pdf}
+  \caption{Label frequency}
   \label{fig:b2v:zipf}
 \end{subfigure}\hfill
-\begin{subfigure}{0.32\textwidth}
+\begin{subfigure}[t]{0.32\textwidth}
   \centering
-  \includegraphics[width=\linewidth]{image/figs/fig7_cooccurrence.pdf}
+  \includegraphics[width=\linewidth,height=3.8cm,keepaspectratio]{image/figs/fig7_cooccurrence.pdf}
   \caption{Label co-occurrence ratio}
   \label{fig:b2v:cooccur}
 \end{subfigure}\hfill
-\begin{subfigure}{0.32\textwidth}
+\begin{subfigure}[t]{0.32\textwidth}
   \centering
-  \includegraphics[width=\linewidth]{image/figs/fig3_length_hist.pdf}
+  \includegraphics[width=\linewidth,height=3.8cm,keepaspectratio]{image/figs/fig3_length_hist.pdf}
   \caption{Summary length distribution}
   \label{fig:b2v:len}
 \end{subfigure}
 
-\vspace{6pt}
+\vspace{8pt}
 
-\begin{subfigure}{0.32\textwidth}
+\begin{subfigure}[t]{0.32\textwidth}
   \centering
-  \includegraphics[width=\linewidth]{image/figs/fig5_tcv_pie.pdf}
+  \includegraphics[width=\linewidth,height=3.8cm,keepaspectratio]{image/figs/fig5_tcv_pie.pdf}
   \caption{TCV dimension composition}
   \label{fig:b2v:tcv}
 \end{subfigure}\hfill
-\begin{subfigure}{0.32\textwidth}
+\begin{subfigure}[t]{0.32\textwidth}
   \centering
-  \includegraphics[width=\linewidth]{image/figs/fig4_label_bar.pdf}
+  \includegraphics[width=\linewidth,height=3.8cm,keepaspectratio]{image/figs/fig4_label_bar.pdf}
   \caption{Per-label sample distribution}
   \label{fig:b2v:labelbar}
 \end{subfigure}\hfill
-\begin{subfigure}{0.32\textwidth}
+\begin{subfigure}[t]{0.32\textwidth}
   \centering
-  \includegraphics[width=\linewidth]{image/figs/fig6_per_date_stacked.pdf}
+  \includegraphics[width=\linewidth,height=3.8cm,keepaspectratio]{image/figs/fig6_per_date_stacked.pdf}
   \caption{Temporal coverage by TCV}
   \label{fig:b2v:time}
 \end{subfigure}
