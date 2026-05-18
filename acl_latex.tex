@@ -235,13 +235,13 @@ summary, and the average session length.}
        &              & \multicolumn{3}{c|}{\textbf{Train}} & \multicolumn{3}{c|}{\textbf{Val}} & \multicolumn{3}{c}{\textbf{Test}} \\
 \textbf{TCV Dimension} & \textbf{\#Constructs} & \textbf{\#Sessions} & \textbf{\#Interact.} & \textbf{Avg.\ Len.} & \textbf{\#Sessions} & \textbf{\#Interact.} & \textbf{Avg.\ Len.} & \textbf{\#Sessions} & \textbf{\#Interact.} & \textbf{Avg.\ Len.} \\
 \midrule
-Functional   & 12 & 3{,}294 & 124{,}154 & 751 & 401 & 15{,}199 & 746 & 405 & 15{,}288 & 757 \\
-Emotional    &  4 &   574 &  20{,}954 & 788 &  79 &  2{,}785 & 758 &  83 &  3{,}148 & 798 \\
-Social       &  5 &   158 &   5{,}953 & 676 &  16 &    550 & 638 &  14 &    514 & 720 \\
-Epistemic    &  4 &    46 &   1{,}623 & 679 &   4 &    121 & 598 &   3 &    118 & 774 \\
-Conditional  &  5 &   219 &   7{,}430 & 694 &  33 &  1{,}167 & 699 &  33 &  1{,}181 & 720 \\
+Functional   & 12 & 3{,}294 & 60{,}501 & 751 & 401 & 7{,}272 & 746 & 405 & 7{,}374 & 757 \\
+Emotional    &  4 &   574 & 10{,}936 & 788 &  79 & 1{,}429 & 758 &  83 & 1{,}603 & 798 \\
+Social       &  5 &   158 &  2{,}521 & 676 &  16 &   243 & 638 &  14 &   242 & 720 \\
+Epistemic    &  4 &    46 &    721 & 679 &   4 &    46 & 598 &   3 &    60 & 774 \\
+Conditional  &  5 &   219 &  3{,}526 & 694 &  33 &   555 & 699 &  33 &   561 & 720 \\
 \midrule
-\textbf{Total} & \textbf{30} & \textbf{4{,}352} & \textbf{162{,}134} & \textbf{748} & \textbf{544} & \textbf{20{,}209} & \textbf{739} & \textbf{544} & \textbf{20{,}428} & \textbf{759} \\
+\textbf{Total} & \textbf{30} & \textbf{4{,}352} & \textbf{79{,}068} & \textbf{748} & \textbf{544} & \textbf{9{,}722} & \textbf{739} & \textbf{544} & \textbf{9{,}910} & \textbf{759} \\
 \bottomrule
 \end{tabular}%
 }
@@ -348,8 +348,9 @@ manifest through longer chains of observable behavior.
 
 \subsection{Temporal Coverage and Split Balance}
 B2V is collected across 13 monthly snapshots spanning March 2025 to March
-2026, totaling 5{,}440 annotated sessions and 202{,}771 extracted behavior
-interactions. Figure~\ref{fig:b2v:time} shows the per-snapshot session
+2026, totaling 5{,}440 annotated sessions and 98{,}700 extracted behavior
+interactions (mean 18.1 per session; counted by longest-match search over a
+curated set of distinct action verbs to avoid double counting). Figure~\ref{fig:b2v:time} shows the per-snapshot session
 count together with the normalized composition of TCV dimensions over time.
 Volumes range from 299 to 482 sessions per snapshot and the cumulative
 collection grows monotonically. The TCV composition is stable across
