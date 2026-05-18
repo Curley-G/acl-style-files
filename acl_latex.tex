@@ -378,6 +378,20 @@ This verification-oriented training paradigm better aligns with the nature of th
 
 
 \section{Benchmarking the Behavior-to-Value Task}
+We evaluate a new task, \textit{Measuring Consumer Values from E-commerce Behaviors}, on our newly constructed benchmark, \textbf{B2V-Bench}. Given a user's pre-purchase behavioral trajectory and the corresponding item context, the task aims to predict the consumption value labels reflected in the behavioral episode and provide supporting behavioral evidence. Formally, let
+\[
+E = \{a_1, a_2, \ldots, a_T\}
+\]
+denote a behavioral episode, where each action \(a_t\) contains the action type, item information, and contextual semantics. The goal is to predict a set of value labels
+\[
+Y \subseteq \mathcal{V},
+\]
+where \(\mathcal{V}\) denotes the predefined consumption value taxonomy.
+
+Based on B2V-Bench, we systematically evaluate whether traditional sequential recommendation models can be adapted to the B2V task, and whether mainstream LLMs perform well under zero-shot and few-shot prompting settings. Finally, we verify the effectiveness of our proposed \textbf{B2V-Model} for behavior-to-value measurement.
+
+\subsection{Experiment setup}
+\paragraph{}
 
 \section*{Limitations}
 
