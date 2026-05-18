@@ -226,22 +226,168 @@ and test splits: the number of distinct value constructs, the number of
 sessions, the number of behavior-interactions extracted from the session
 summary, and the average session length.}
 \label{tab:b2v-stats}
-\begin{tabular}{c|c|ccc|ccc|ccc}
+\setlength{\tabcolsep}{4pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|c|ccc|ccc|ccc}
 \toprule
-       &              & \multicolumn{3}{c|}{Train} & \multicolumn{3}{c|}{Val} & \multicolumn{3}{c}{Test} \\
-TCV Dimension & \#Constructs & \#Sessions & \#Interactions & Avg.\ Length & \#Sessions & \#Interactions & Avg.\ Length & \#Sessions & \#Interactions & Avg.\ Length \\
+       &              & \multicolumn{3}{c|}{\textbf{Train}} & \multicolumn{3}{c|}{\textbf{Val}} & \multicolumn{3}{c}{\textbf{Test}} \\
+\textbf{TCV Dimension} & \textbf{\#Constructs} & \textbf{\#Sessions} & \textbf{\#Interact.} & \textbf{Avg.\ Len.} & \textbf{\#Sessions} & \textbf{\#Interact.} & \textbf{Avg.\ Len.} & \textbf{\#Sessions} & \textbf{\#Interact.} & \textbf{Avg.\ Len.} \\
 \midrule
-Functional   & 12 & 3,294 & 124,154 & 751 & 401 & 15,199 & 746 & 405 & 15,288 & 757 \\
-Emotional    &  4 &   574 &  20,954 & 788 &  79 &  2,785 & 758 &  83 &  3,148 & 798 \\
-Social       &  5 &   158 &   5,953 & 676 &  16 &    550 & 638 &  14 &    514 & 720 \\
-Epistemic    &  4 &    46 &   1,623 & 679 &   4 &    121 & 598 &   3 &    118 & 774 \\
-Conditional  &  5 &   219 &   7,430 & 694 &  33 &  1,167 & 699 &  33 &  1,181 & 720 \\
+Functional   & 12 & 3{,}294 & 124{,}154 & 751 & 401 & 15{,}199 & 746 & 405 & 15{,}288 & 757 \\
+Emotional    &  4 &   574 &  20{,}954 & 788 &  79 &  2{,}785 & 758 &  83 &  3{,}148 & 798 \\
+Social       &  5 &   158 &   5{,}953 & 676 &  16 &    550 & 638 &  14 &    514 & 720 \\
+Epistemic    &  4 &    46 &   1{,}623 & 679 &   4 &    121 & 598 &   3 &    118 & 774 \\
+Conditional  &  5 &   219 &   7{,}430 & 694 &  33 &  1{,}167 & 699 &  33 &  1{,}181 & 720 \\
 \midrule
-Total        & 30 & 4,352 & 162,134 & 748 & 544 & 20,209 & 739 & 544 & 20,428 & 759 \\
+\textbf{Total} & \textbf{30} & \textbf{4{,}352} & \textbf{162{,}134} & \textbf{748} & \textbf{544} & \textbf{20{,}209} & \textbf{739} & \textbf{544} & \textbf{20{,}428} & \textbf{759} \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table*}
 
+
+\subsection{Label Frequency and Imbalance}
+The empirical label distribution of B2V follows a heavily skewed long tail.
+Figure~\ref{fig:label-bar} lists the 28 distinct primary labels actually used
+by human annotators, sorted by frequency. \emph{price~value} alone covers
+42.1\% of the samples, the top-5 labels together account for 79\%, and the
+bottom 10 labels each appear in fewer than 1\% of sessions. The same skew is
+visible on a log-log scale (Figure~\ref{fig:zipf}): the rank--frequency relation
+admits a near-linear fit with slope $-2.25$, indicating a Zipf-like decay even
+steeper than the standard $\alpha\!\approx\!1$. As a quantitative summary,
+Figure~\ref{fig:lorenz} reports the Lorenz curve of the label distribution
+with a Gini coefficient of $0.77$, reflecting strong inequality between head
+and tail constructs. Because of this imbalance, we report not only Accuracy
+but also macro-averaged F1 in Section~\ref{sec:benchmark}, so that rare
+constructs receive equal weight in evaluation.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{image/figs/fig4_label_bar.pdf}
+\caption{Distribution of the 28 primary labels actually used by annotators.
+Bars are colored by the parent TCV dimension. \emph{price~value} alone
+accounts for 42.1\% of all samples.}
+\label{fig:label-bar}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\begin{minipage}{0.48\linewidth}
+\centering
+\includegraphics[width=\linewidth]{image/figs/fig1_label_loglog.pdf}
+\subcaption{Zipf--like rank/frequency plot, fit slope $=-2.25$.}
+\label{fig:zipf}
+\end{minipage}\hfill
+\begin{minipage}{0.48\linewidth}
+\centering
+\includegraphics[width=\linewidth]{image/figs/fig11_lorenz.pdf}
+\subcaption{Lorenz curve of label mass (Gini $=0.77$).}
+\label{fig:lorenz}
+\end{minipage}
+\caption{Two views of B2V's label imbalance.}
+\label{fig:imbalance}
+\end{figure}
+
+\subsection{TCV Composition and Description Complexity}
+Mapping the 30 constructs onto the five dimensions of the Theory of
+Consumption Values (Functional, Emotional, Social, Epistemic, Conditional)
+yields the composition shown in Figure~\ref{fig:tcv-donut}: Functional values
+dominate at 76.5\%, followed by Emotional (13.7\%) and Conditional (5.3\%).
+This is consistent with the broader pre-purchase nature of the sessions in
+B2V, where instrumental concerns such as price--value, functional efficacy
+and perceived risk drive most decisions, while Epistemic and Social drivers
+appear less frequently but more selectively.
+
+Different value dimensions also impose different descriptive demands on the
+behavior summary itself. Figure~\ref{fig:len-by-tcv} compares the per-sample
+summary length across dimensions: emotional decisions yield the longest
+summaries (median 770 characters), while Social and Epistemic decisions
+require visibly less text. This suggests that aesthetic and affective drivers
+manifest through longer chains of observable behavior, whereas social drivers
+tend to be expressed more compactly.
+
+\begin{figure}[t]
+\centering
+\begin{minipage}{0.52\linewidth}
+\centering
+\includegraphics[width=\linewidth]{image/figs/fig5_tcv_pie.pdf}
+\subcaption{TCV dimension composition.}
+\label{fig:tcv-donut}
+\end{minipage}\hfill
+\begin{minipage}{0.42\linewidth}
+\centering
+\includegraphics[width=\linewidth]{image/figs/fig10_length_by_tcv.pdf}
+\subcaption{Summary length by TCV dimension.}
+\label{fig:len-by-tcv}
+\end{minipage}
+\caption{Distribution of TCV dimensions and the corresponding descriptive
+complexity of behavior summaries.}
+\label{fig:tcv}
+\end{figure}
+
+\subsection{Temporal Coverage}
+B2V is collected across 13 monthly snapshots spanning March 2025 to March 2026,
+totaling 5{,}440 annotated sessions and 202{,}771 extracted behavior
+interactions. Figure~\ref{fig:per-date} shows the per-snapshot session count
+together with the normalized composition of TCV dimensions over time.
+Volumes range from 299 to 482 sessions per snapshot and the cumulative
+collection grows monotonically. The TCV composition is stable across
+snapshots: Functional values remain dominant throughout, while Emotional,
+Conditional, Social and Epistemic shares stay within $\pm$3\% of their global
+means. This indicates that the dataset captures consistent decision behavior
+across a one-year window rather than reflecting a single seasonal pattern.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{image/figs/fig6_per_date_stacked.pdf}
+\caption{Temporal coverage of B2V. Top: number of sessions per monthly
+snapshot together with the cumulative collection (red line). Bottom:
+normalized composition of TCV dimensions over time.}
+\label{fig:per-date}
+\end{figure}
+
+\subsection{Multi-label and Construct Co-occurrence}
+75.2\% of B2V sessions carry at least one secondary value beyond the primary
+label, supporting evaluation under both single-label and multi-label
+formulations. Figure~\ref{fig:cooccur} reports the conditional co-occurrence
+matrix among the 12 most frequent labels, where cell $(i,j)$ is
+$P(\text{label}_j \in \text{sample} \mid \text{label}_i \in \text{sample})$.
+Two patterns stand out. First, \emph{price~value} appears as a near-universal
+co-driver: conditioned on almost any other label, the probability of
+\emph{price~value} also being mentioned exceeds 0.55. Second, several pairs
+exhibit strong directional asymmetries (e.g., \emph{functional efficacy}
+$\to$ \emph{perceived risk} = 0.35, \emph{brand trust}
+$\to$ \emph{perceived risk} = 0.28), which motivates the 15 if--then
+disambiguation rules used during annotation and model prompting.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{image/figs/fig7_cooccurrence.pdf}
+\caption{Conditional co-occurrence among the 12 most frequent labels:
+$P(\text{label}_j \mid \text{label}_i)$.}
+\label{fig:cooccur}
+\end{figure}
+
+\subsection{Split Balance}
+We adopt an 80/10/10 stratified split at the session level, keeping the
+relative frequencies of all primary labels approximately constant across the
+three partitions. Figure~\ref{fig:split-balance} reports the per-label share
+within each split for the 12 most frequent labels. The largest deviation
+between any split and the corpus average is 2.9 percentage points
+(\emph{aesthetic~appeal} in test, 14.7\% vs.\ 11.9\% overall); the
+remaining labels agree within $\pm$2\%. Total token-level statistics
+(Table~\ref{tab:b2v-stats}) further confirm that average session length,
+behavior--interaction count and multi-label rate match closely across
+train, validation and test.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{image/figs/fig9_split_balance.pdf}
+\caption{Per-label share within each split for the 12 most frequent labels.
+The split keeps the long-tailed distribution intact while preserving label
+proportions across partitions.}
+\label{fig:split-balance}
+\end{figure}
 
 
 \section{Method}
